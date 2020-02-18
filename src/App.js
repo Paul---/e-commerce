@@ -6,19 +6,20 @@ import SignInAndSignOut from './components/sign-in-and-sing-up/SignInAndSignUp.c
 import HomePage from './pages/homepage/HomePage.component';
 import ShopPage from './pages/shop/Shop.component';
 import Header from './components/header/Header.component';
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 function App() {
   // state vars
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged(async user => {
       setCurrentUser(user);
+      createUserProfileDocument(user);
     });
   }, [currentUser]);
 
-  
+
   useEffect(() => {
     console.log('current user', currentUser);
   })
