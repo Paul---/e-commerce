@@ -9,25 +9,39 @@ import Header from './components/header/Header.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 function App() {
-  // state vars
-  const [currentUser, setCurrentUser] = useState({});
+  // state vars  ////////////////
+  const [currentUserData, setCurrentUserData] = useState({});
+  const [currentUserId, setCurrentUserId] = useState({});
 
+  // functions /////////////////
+
+  // get user data
   useEffect(() => {
-    auth.onAuthStateChanged(async user => {
-      setCurrentUser(user);
-      createUserProfileDocument(user);
+    auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot(snapShot => {
+          setCurrentUserId(snapShot.id);
+          setCurrentUserData(snapShot.data());
+          console.log('data  set')
+        })
+      } else {
+        console.log('cleared')
+        clearUserData();
+      }
     });
-  }, [currentUser]);
+  }, [currentUserData]);
 
-
-  useEffect(() => {
-    console.log('current user', currentUser);
-  })
-
+  // clear user state data
+  const clearUserData = () => {
+    setCurrentUserData({});
+    setCurrentUserId({});
+  }
 
   return (
     <div className='App'>
-      <Header currentUser={currentUser} />
+      <Header currentUser={currentUserData} />
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route path='/shop' component={ShopPage} />
