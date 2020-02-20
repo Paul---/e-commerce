@@ -6,21 +6,59 @@ import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import './sign-up.styles.scss';
 
 const SignUp = () => {
-  const handleChange = () => {};
-
   const [displayName, setDisplayName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const resetUserState = () => {
+    setDisplayName('');
+    setPassword('');
+    setEmail('');
+    setConfirmPassword('');
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      alert(`Passwords don't match.`);
+      return;
+    }
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      await createUserProfileDocument(user, displayName);
+      resetUserState();
+    } catch (e) {
+      console.log('error from signup', e);
+    }
+  };
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'displayName') {
+      setDisplayName(prev => {
+        return value;
+      });
+    } else if (name === 'password') {
+      setPassword(value);
+    } else {
+      setConfirmPassword(value);
+    }
+  };
 
   return (
     <section className='sign-up'>
       <h2 className='title'>I don't have an account</h2>
       <span>Sign up with your email and password</span>
-      <form className='sign-up-form' onSubmit={submitForm}>
+      <form className='sign-up-form' onSubmit={handleSubmit}>
         <FormInput
           type='text'
-          name={displayName}
+          name='displayName'
           value={displayName}
           onChange={handleChange}
           label='Display Name'
@@ -28,7 +66,7 @@ const SignUp = () => {
         />
         <FormInput
           type='email'
-          name={email}
+          name='email'
           value={email}
           onChange={handleChange}
           label='Email'
@@ -36,7 +74,7 @@ const SignUp = () => {
         />
         <FormInput
           type='password'
-          name={password}
+          name='password'
           value={password}
           onChange={handleChange}
           label='Display Password'
@@ -51,6 +89,9 @@ const SignUp = () => {
           required
         />
         <CustomButton type='submit'>SIGN UP</CustomButton>
+        {/* <CustomButton type='reset' onClick={resetUserState}>
+          CLEAR FORM
+        </CustomButton> */}
       </form>
     </section>
   );

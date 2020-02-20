@@ -10,38 +10,38 @@ import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 function App() {
   // state vars  ////////////////
-  const [currentUserData, setCurrentUserData] = useState({});
-  const [currentUserId, setCurrentUserId] = useState({});
-
-  // functions /////////////////
+  const [currentUser, setCurrentUser] = useState({});
 
   // get user data
+  let unsubscribeFromAuth = null;
   useEffect(() => {
-    auth.onAuthStateChanged(async userAuth => {
+    unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
-
         userRef.onSnapshot(snapShot => {
-          setCurrentUserId(snapShot.id);
-          setCurrentUserData(snapShot.data());
-          console.log('data  set')
+          setCurrentUser({ id: snapShot.id, ...snapShot.data() })
+          return;
         })
       } else {
         console.log('cleared')
         clearUserData();
       }
+       setCurrentUser(userAuth);
     });
-  }, [currentUserData]);
+    return () => { unsubscribeFromAuth() };
+  }, []);
 
-  // clear user state data
+  useEffect(() => {
+    console.log('CUSER', currentUser);
+  });
+
   const clearUserData = () => {
-    setCurrentUserData({});
-    setCurrentUserId({});
+    setCurrentUser({});
   }
 
   return (
     <div className='App'>
-      <Header currentUser={currentUserData} />
+      <Header currentUser={currentUser} />
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route path='/shop' component={ShopPage} />

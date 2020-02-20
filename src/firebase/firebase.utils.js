@@ -17,17 +17,13 @@ const config = {
 
 firebase.initializeApp(config);
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
-
-export const createUserProfileDocument = async (userAuth, additionalData) => {
+export const createUserProfileDocument = async (userAuth, displayName, ...additionalData) => {
   if (!userAuth) return;
-
   const userRef = firestore.doc(`users/${userAuth.uid}`);
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
-    const { displayName, email } = userAuth;
+    const { email } = userAuth;
     const createdAt = new Date();
 
     try {
@@ -39,11 +35,14 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       }
       )
     } catch (err) {
-      console.log(`Error creating user message: ${err.message}`)
+      console.log(`Error creating user: ${err.message}`)
     }
   }
   return userRef;
 }
+
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
