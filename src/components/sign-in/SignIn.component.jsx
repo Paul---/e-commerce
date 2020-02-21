@@ -5,7 +5,7 @@ import CustomButton from '../custom-button/CustomButton.component';
 
 import { signInWithGoogle, auth } from '../../firebase/firebase.utils';
 
-const SiginIn = () => {
+const SignIn = () => {
   // state hooks
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -57,4 +57,8 @@ const SiginIn = () => {
   );
 };
 
-export default SiginIn;
+SignIn.defaultProps = {
+  password: 'testpassword',
+  eamil: 'fake@email.com'
+};
+export default SignIn;
