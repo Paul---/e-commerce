@@ -6,8 +6,10 @@ import SignInAndSignOut from './components/sign-in-and-sing-up/SignInAndSignUp.c
 import HomePage from './pages/homepage/HomePage.component';
 import ShopPage from './pages/shop/Shop.component';
 import Header from './components/header/Header.component';
+import { createStructuredSelector } from 'reselect';
 import { setCurrentUser } from './redux/user/user.actions';
 
+import { selectCurrentUser } from './redux/user/user.selectors';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import './App.css';
 
@@ -44,8 +46,8 @@ const App = (props) => {
     </div>
   );
 }
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 })
 
 
