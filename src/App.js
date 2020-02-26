@@ -6,6 +6,8 @@ import SignInAndSignOut from './components/sign-in-and-sing-up/SignInAndSignUp.c
 import HomePage from './pages/homepage/HomePage.component';
 import ShopPage from './pages/shop/Shop.component';
 import Header from './components/header/Header.component';
+import CheckOutPage from './pages/checkout/CheckOut.component';
+
 import { createStructuredSelector } from 'reselect';
 import { setCurrentUser } from './redux/user/user.actions';
 
@@ -41,6 +43,7 @@ const App = (props) => {
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route path='/shop' component={ShopPage} />
+        <Route exact path='/checkout' component={CheckOutPage} />
         <Route exact path='/signin' render={() => props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignOut />)} />
       </Switch>
     </div>
