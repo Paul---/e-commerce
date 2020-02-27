@@ -2,14 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import CheckoutItem from '../../components/checkout-item/CheckoutItem.component';
-import CustomButton from '../../components/custom-button/CustomButton.component';
 import {
   selectCartItems,
   selectCartTotal
 } from '../../redux/cart/cart.selectors';
 
 import './checkout.styles.scss';
-import StripeCheckoutButton from '../../components/stripe-button/StripeButton.component'
+import StripeButton from '../../components/stripe-button/StripeButton.component';
 import StripeCheckout from 'react-stripe-checkout';
 
 const CheckOutPage = ({ cartItems, total }) => {
@@ -35,19 +34,16 @@ const CheckOutPage = ({ cartItems, total }) => {
       {cartItems.map(cartItem => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-      <div className='update'>
-        <h3 className='message'>
-          Checkout Functionality Coming Soon. I will be adding Stripe Payment
-          processing in a couple of days.
-        </h3>
-      </div>
-      <div className='paynow-btn'>
-        <CustomButton>PAY NOW</CustomButton>
-      </div>
       <div className='total'>
         <span>TOTAL : $ {total}</span>
       </div>
       <StripeButton price={total} />
+
+      <div className='test-warning'>
+        **Please use the following test credit card info for test payments**
+        <br />
+        ** 4242 4242 4242 4242 - Exp 09/20 -- CVC 123 **
+      </div>
     </div>
   );
 };
