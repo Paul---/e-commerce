@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './shop.styles.scss';
 import { Route } from 'react-router-dom';
 

@@ -41,10 +41,10 @@ const App = (props) => {
     <div className='App'>
       <Header />
       <Switch>
-        <Route exact path='/' component={HomePage} />
-        <Route path='/shop' component={ShopPage} />
-        <Route exact path='/checkout' component={CheckOutPage} />
-        <Route exact path='/signin' render={() => props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignOut />)} />
+        <Route exact path='/e-commerce/' component={HomePage} />
+        <Route path='/e-commerce/shop' component={ShopPage} />
+        <Route exact path='/e-commerce/checkout' component={CheckOutPage} />
+        <Route exact path='/e-commerce/signin' render={() => props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignOut />)} />
       </Switch>
     </div>
   );
