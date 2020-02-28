@@ -9,7 +9,6 @@ import {
 
 import './checkout.styles.scss';
 import StripeButton from '../../components/stripe-button/StripeButton.component';
-import StripeCheckout from 'react-stripe-checkout';
 
 const CheckOutPage = ({ cartItems, total }) => {
   return (

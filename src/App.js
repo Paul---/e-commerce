@@ -15,7 +15,9 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import './App.css';
 
+
 const App = (props) => {
+
   // get user data
   let unsubscribeFromAuth = null;
   useEffect(() => {
