@@ -6,7 +6,6 @@ const StripeBuuton = ({ price }) => {
   const pubKey = 'pk_test_skwluBcyeQxb5jjiKQCVRukv001DV9bRcB';
 
   const onToken = token => {
-    console.log(token);
     alert(`Your Payment Was Processed Successfully!`);
   };
 
