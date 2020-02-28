@@ -1,6 +1,7 @@
 .header {
   height: 70px;
-  width: 100%;
+  width: 93%;
+  margin: auto auto;
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
@@ -12,17 +13,18 @@
   }
 
   .homepage-title {
-    position: relative;
-    left: 420px;
+    height: 100%;
     color: #808282;
+    margin-left: 250px;
   }
 
   .options {
-    width: 50%;
+    width: fit-content;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-right: 15px;
 
     .option {
       padding: 10px 15px;
