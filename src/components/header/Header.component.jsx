@@ -9,39 +9,38 @@ import CartIcon from '../cart-icon/CartIcon.component';
 import CartDropdown from '../cart-dropdown/CartDropdown.component';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-
-import './header.styles.scss';
+import {
+  HeaderStyles,
+  LogoContainer,
+  OptionsContainer,
+  TitleContainer,
+  OptionDiv,
+  OptionLink
+} from './HeaderStyles.component';
 
 const Header = ({ currentUser, hidden }) => {
   return (
-    <div className='header'>
-      <Link className='logo-container' to='/e-commerce/'>
+    <HeaderStyles>
+      <LogoContainer to='/e-commerce'>
         <Logo className='logo' />
-      </Link>
-
-      <div className='homepage-title'>
+      </LogoContainer>
+      <TitleContainer>
         <h1 className='title'>Your Favorite Ecommerce Site!</h1>
-      </div>
-      <div className='options'>
-        <Link className='option' to='/e-commerce/shop'>
-          SHOP
-        </Link>
-        <Link className='option' to='/e-commerce/'>
-          CONTACT
-        </Link>
+      </TitleContainer>
+      <OptionsContainer>
+        <OptionLink to='/e-commerce/shop'>SHOP</OptionLink>
+        <OptionLink to='/e-commerce/shop'>CONTACT</OptionLink>
         {currentUser ? (
-          <div className='option' onClick={() => auth.signOut()}>
+          <OptionDiv onClick={() => auth.signOut()}>
             SIGN OUT
-          </div>
+          </OptionDiv>
         ) : (
-          <Link to='/e-commerce/signin' className='option'>
-            SIGN IN
-          </Link>
+          <OptionLink to='/e-commerce/signin'>SIGN IN</OptionLink>
         )}
         <CartIcon />
-      </div>
+      </OptionsContainer>
       {hidden ? null : <CartDropdown />}
-    </div>
+    </HeaderStyles>
   );
 };
 
