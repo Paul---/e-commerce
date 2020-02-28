@@ -46,7 +46,7 @@ const App = (props) => {
         <Route exact path='/e-commerce/' component={HomePage} />
         <Route path='/e-commerce/shop' component={ShopPage} />
         <Route exact path='/e-commerce/checkout' component={CheckOutPage} />
-        <Route exact path='/e-commerce/signin' render={() => props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignOut />)} />
+        <Route exact path='/e-commerce/signin' render={() => props.currentUser ? (<Redirect to='/e-commerce/' />) : (<SignInAndSignOut />)} />
       </Switch>
     </div>
   );
