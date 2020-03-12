@@ -7,6 +7,8 @@ import HomePage from './pages/homepage/HomePage.component';
 import ShopPage from './pages/shop/Shop.component';
 import Header from './components/header/Header.component';
 import CheckOutPage from './pages/checkout/CheckOut.component';
+import ThankYou from './pages/thank-you/ThankYou.component';
+import NotFound from './pages/404/NotFound.component';
 
 import { createStructuredSelector } from 'reselect';
 import { setCurrentUser } from './redux/user/user.actions';
@@ -47,6 +49,8 @@ const App = (props) => {
         <Route path='/e-commerce/shop' component={ShopPage} />
         <Route exact path='/e-commerce/checkout' component={CheckOutPage} />
         <Route exact path='/e-commerce/signin' render={() => props.currentUser ? (<Redirect to='/e-commerce/' />) : (<SignInAndSignOut />)} />
+        <Route exact path='/e-commerce/thank-you' component={ThankYou} />
+        <Route path='*' exact={true} component={NotFound} />
       </Switch>
     </div>
   );
