@@ -80,7 +80,13 @@ const SignUp = () => {
           label='Password'
           required
         />
-        {password.length < 8 ? <p style={{ color: '#4285f4', fontSize: '17px'}}>Please create an 8 character password.</p>:''}
+        {password.length < 8 ? (
+          <p style={{ color: '#4285f4', fontSize: '17px' }}>
+            Please create a password with 8 characters or more.
+          </p>
+        ) : (
+          ''
+        )}
         <FormInput
           type='password'
           name='confirmPassword'
@@ -89,7 +95,11 @@ const SignUp = () => {
           label='Confirm Password'
           required
         />
-        {password !== confirmPassword ? <p style={{ color: 'red' }}>Your Passwords do not match.</p>:''}
+        {password !== confirmPassword ? (
+          <p style={{ color: 'red' }}>Your Passwords do not match.</p>
+        ) : (
+          ''
+        )}
         <CustomButton type='submit'>SIGN UP</CustomButton>
         {/* <CustomButton type='reset' onClick={resetUserState}>
           CLEAR FORM
