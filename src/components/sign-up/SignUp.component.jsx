@@ -10,12 +10,14 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorState, setErrorState] = useState(false);
 
   const resetUserState = () => {
     setDisplayName('');
     setPassword('');
     setEmail('');
     setConfirmPassword('');
+    setErrorState(false);
   };
 
   const handleSubmit = async e => {
@@ -32,7 +34,7 @@ const SignUp = () => {
       await createUserProfileDocument(user, displayName);
       resetUserState();
     } catch (e) {
-      console.log('error from signup', e);
+      setErrorState(true);
     }
   };
 
@@ -81,7 +83,7 @@ const SignUp = () => {
           required
         />
         {password.length < 8 ? (
-          <p style={{ color: '#4285f4', fontSize: '17px' }}>
+          <p style={{ color: 'red', fontSize: '17px' }}>
             Please create a password with 8 characters or more.
           </p>
         ) : (
@@ -100,10 +102,13 @@ const SignUp = () => {
         ) : (
           ''
         )}
+        {errorState ? (
+          <p style={{ color: '#4285f4' }}>
+            There was an error signing up. Please check your information and
+            internet connection.
+          </p>
+        ) : null}
         <CustomButton type='submit'>SIGN UP</CustomButton>
-        {/* <CustomButton type='reset' onClick={resetUserState}>
-          CLEAR FORM
-        </CustomButton> */}
       </form>
     </section>
   );
