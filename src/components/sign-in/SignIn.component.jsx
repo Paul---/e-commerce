@@ -9,6 +9,7 @@ const SignIn = () => {
   // state hooks
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorState, setErrorState] = useState(false);
 
   // function section
   const handleSubmit = async e => {
@@ -18,7 +19,7 @@ const SignIn = () => {
       setPassword('');
       setEmail('');
     } catch (e) {
-      console.log(`Error`, e);
+      setErrorState(true);
     }
   };
 
@@ -46,6 +47,12 @@ const SignIn = () => {
           onChange={e => setPassword(e.target.value)}
           required
         />
+        {errorState ? (
+          <p style={{ color: 'red' }}>
+            There was an error signing in. Please check your information and
+            internet connection.
+          </p>
+        ) : null}
         <div className='buttons'>
           <CustomButton type='submit'>Sign In</CustomButton>
           <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
