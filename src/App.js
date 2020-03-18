@@ -17,8 +17,6 @@ import './App.css';
 
 
 const App = (props) => {
-
-  // get user data
   let unsubscribeFromAuth = null;
   useEffect(() => {
     const { setCurrentUser } = props;
