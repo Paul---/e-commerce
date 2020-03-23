@@ -10,7 +10,6 @@ const CollectionItem = React.lazy(() =>
 
 const CollectionPage = ({ collection }) => {
   const { title, items } = collection;
-  debugger;
 
   return (
     <div className='collection-page'>
