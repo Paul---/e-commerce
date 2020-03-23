@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import SignInAndSignOut from './components/sign-in-and-sing-up/SignInAndSignUp.component';
-import HomePage from './pages/homepage/HomePage.component';
+import HomePage from './pages/HomePage/HomePage.component';
 import ShopPage from './pages/shop/Shop.component';
 import Header from './components/header/Header.component';
 import CheckOutPage from './pages/checkout/CheckOut.component';

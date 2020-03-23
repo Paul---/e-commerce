@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-// Google confirms that this info is safe for public storage
+// Google confirms that the info below is safe for public storage and will not compromise security
 const config = {
   apiKey: "AIzaSyDwZqbFyC97stHYozMPFenYZAzMIDymjxk",
   authDomain: "regal-clothing-store.firebaseapp.com",
