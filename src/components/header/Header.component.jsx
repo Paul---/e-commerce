@@ -6,8 +6,8 @@ import { createStructuredSelector } from 'reselect';
 import { auth } from '../../firebase/firebase.utils';
 import CartIcon from '../cart-icon/CartIcon.component';
 import CartDropdown from '../cart-dropdown/CartDropdown.component';
-import { selectCartHidden } from '../../redux/cart/cart.selectors';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
+// import { selectCartHidden } from '../../redux/cart/cart.selectors';
+// import { selectCurrentUser } from '../../redux/user/user.selectors';
 import {
   HeaderStyles,
   LogoContainer,
@@ -18,9 +18,9 @@ import {
 } from './HeaderStyles.component';
 
 const Header = () => {
-  const reduxstate = useSelector(state => state);
   const hidden = useSelector(state => state.cart.hidden);
   const currentUser = useSelector(state => state.user.currentUser);
+
   return (
     <HeaderStyles>
       <LogoContainer to='/e-commerce/'>
