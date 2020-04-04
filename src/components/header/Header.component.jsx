@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { createStructuredSelector } from 'reselect';
 
@@ -17,7 +17,10 @@ import {
   OptionLink
 } from './HeaderStyles.component';
 
-const Header = ({ currentUser, hidden }) => {
+const Header = () => {
+  const reduxstate = useSelector(state => state);
+  const hidden = useSelector(state => state.cart.hidden);
+  const currentUser = useSelector(state => state.user.currentUser);
   return (
     <HeaderStyles>
       <LogoContainer to='/e-commerce/'>
@@ -43,9 +46,4 @@ const Header = ({ currentUser, hidden }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  hidden: selectCartHidden
-});
-
-export default connect(mapStateToProps)(Header);
+export default Header;
