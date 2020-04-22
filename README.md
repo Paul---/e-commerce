@@ -3,6 +3,8 @@
 This is a project built to demonstrate a solid understanding of React and Redux technologies.
 Enjoy a mock online shopping experience complete with mock credit transactions.
 
+Go to [https://paul---.github.io/e-commerce/](https://paul---.github.io/e-commerce/) to see the live version.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
