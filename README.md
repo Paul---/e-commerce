@@ -7,6 +7,18 @@ Go to [https://paul---.github.io/e-commerce/](https://paul---.github.io/e-commer
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Built With
+
+* [React](https://reactjs.org/) - JavaScript framework used
+* [Redux](https://redux.js.org/) - used for state management
+* [React Router](https://reacttraining.com/react-router/) - used for SPA page routing
+* [Redux Logger](https://www.npmjs.com/package/redux-logger/) - used for development environment to log changes in state
+* [Redux Persist](https://www.npmjs.com/package/redux-persist/) - used to persist and rehydrate the redux store
+* [Reselect](https://www.npmjs.com/package/reselect/) - used to create memoized selectors for the redux store
+* [Styled Components](https://www.npmjs.com/package/styled-components/) - used to create styled components for React
+* [Node Sass](https://www.npmjs.com/package/node-sass/) - used for SASS implementation
+* [Firebase](https://firebase.google.com/) - Used to host back end database and oAuth functionality.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -65,19 +77,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-
-## Built With
-
-* [React](https://reactjs.org/) - JavaScript framework used
-* [Redux](https://redux.js.org/) - used for state management
-* [React Router](https://reacttraining.com/react-router/) - used for SPA page routing
-* [Redux Logger](https://www.npmjs.com/package/redux-logger/) - used for development environment to log changes in state
-* [Redux Persist](https://www.npmjs.com/package/redux-persist/) - used to persist and rehydrate the redux store
-* [Reselect](https://www.npmjs.com/package/reselect/) - used to create memoized selectors for the redux store
-* [Styled Components](https://www.npmjs.com/package/styled-components/) - used to create styled components for React
-* [Node Sass](https://www.npmjs.com/package/node-sass/) - used for SASS implementation
-* [Firebase](https://firebase.google.com/) - Used to host back end database and oAuth functionality.
 
 ## License
 
